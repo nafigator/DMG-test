@@ -1,0 +1,3 @@
+[submodule "lib/Veles"]
+	path = lib/Veles
+	url = https://github.com/nafigator/Veles.git
