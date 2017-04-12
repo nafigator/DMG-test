@@ -32,12 +32,12 @@ class RegistrationBuilder extends AbstractResponseBuilder
 		header('HTTP/1.1 201 Created', true, 201);
 
 		$data = json_decode($this->result, true);
+		$results = $data['results'][0];
 
 		$this->response = [
 			'token' => base64_encode(
-				$data['results'][0]['id']
-				. ':'
-				. $data['results'][0]['photo_hash'])
+				$results['id'] . ':' . $results['photo_hash']
+			)
 		];
 	}
 }
