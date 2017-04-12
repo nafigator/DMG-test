@@ -28,7 +28,6 @@ class RegistrationResponseBuilder extends AbstractResponseBuilder
 	 */
 	public function build()
 	{
-		//TODO Проверка кода ответа и exceptions
 		header('HTTP/1.1 201 Created', true, 201);
 
 		$data    = json_decode($this->result, true);
@@ -39,5 +38,7 @@ class RegistrationResponseBuilder extends AbstractResponseBuilder
 				$results['id'] . ':' . $data['results'][0]['photo_hash']
 			)
 		];
+
+		return $this;
 	}
 }
