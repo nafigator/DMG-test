@@ -13,6 +13,7 @@
 namespace ResponseBuilders;
 
 use ResponseBuilders\Base\AbstractResponseBuilder;
+use SplSubject;
 use Veles\Traits\Observable;
 
 /**
@@ -20,7 +21,7 @@ use Veles\Traits\Observable;
  *
  * @author Yancharuk Alexander <alex at itvault at info>
  */
-class LoginBuilder extends AbstractResponseBuilder
+class LoginBuilder extends AbstractResponseBuilder implements SplSubject
 {
 	use Observable;
 

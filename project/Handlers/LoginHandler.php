@@ -25,7 +25,7 @@ use Veles\Exceptions\Http\UnprocessableException;
  */
 class LoginHandler implements SplObserver
 {
-	const PREFIX = 'DMG:LOGIN';
+	const PREFIX = 'DMG:LOGIN:';
 	const YEAR   = 31536000;
 
 	/**
@@ -45,11 +45,12 @@ class LoginHandler implements SplObserver
 		$key  = self::PREFIX . $face['id'];
 
 		if (Cache::has($key)) {
-			throw new UnprocessableException([
+			throw new UnprocessableException([[
 				'message' => 'User already logged in'
-			]);
+			]]);
 		}
 
-		Cache::set($key, $face['photo_hash'], self::YEAR);
+		$ttl = $_SERVER['REQUEST_TIME'] + self::YEAR;
+		Cache::set($key, $face['photo_hash'], $ttl);
 	}
 }
