@@ -1,2 +1,10 @@
 # ссылка на фото Брэда Питта
 https://pbs.twimg.com/media/CO0d2ZcUkAA6gjw.jpg
+
+./api-get.sh /categories
+
+./api-post.sh 'link=https://pbs.twimg.com/media/CO0d2ZcUkAA6gjw.jpg&first_name=Зураб&last_name=Хургидзе&patronymic=Азамович' /registration
+
+./api-post.sh 'link=https://pbs.twimg.com/media/CO0d2ZcUkAA6gjw.jpg' /login
+
+./api-post-auth.sh '' /logout
