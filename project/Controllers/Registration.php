@@ -40,14 +40,8 @@ class Registration extends RestApiController
 			'galleries'   => isset($category) ? [$category] : ['default']
 		];
 
-		//$fp = fopen('/tmp/var.dump', 'w+');
-		//$options[CURLOPT_VERBOSE] = true;
-		//$options[CURLOPT_STDERR]  = $fp;
-
 		$request = (new FindFacePostFactory)->create('face', $link, $options);
 		$result  = $request->exec();
-
-		//fclose($fp);
 
 		return (new RegistrationBuilder)
 			->setRequest($request)

@@ -38,15 +38,8 @@ class Login extends RestApiController
 			'mf_selector' => 'reject'
 		];
 
-		//$fp = fopen('/tmp/var.dump', 'w+');
-		//$options[CURLOPT_VERBOSE] = true;
-		//$options[CURLOPT_STDERR]  = $fp;
-
 		$request = (new FindFacePostFactory)->create('identify', $link, $options);
 		$result  = $request->exec();
-
-		//fclose($fp);
-
 		$builder = new LoginBuilder;
 		$builder->attach(new LoginHandler);
 
