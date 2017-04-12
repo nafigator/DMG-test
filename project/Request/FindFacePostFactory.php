@@ -39,6 +39,7 @@ class FindFacePostFactory
 	{
 		if (isset($link)) {
 			$this->setPhotoByLink($link, $options);
+
 			$request = new FindFaceJsonData($uri, $options);
 		} else {
 			if (!(new UploadedFileValidator)->check('file')) {
@@ -47,6 +48,8 @@ class FindFacePostFactory
 					'message' => 'Not a valid image'
 				]]);
 			}
+
+			$this->setPhotoByFile($options);
 
 			$request = new FindFaceMultipartData($uri, $options);
 		}
@@ -78,13 +81,13 @@ class FindFacePostFactory
 	{
 		if (isset($options[CURLOPT_POSTFIELDS])) {
 			$options[CURLOPT_POSTFIELDS] += [
-				"proto"    => "@$_FILES[file][tmp_name]",
-				"filename" => $_FILES['file']['name']
+				'photo'    => '@' . $_FILES['file']['tmp_name'],
+				'filename' => $_FILES['file']['name']
 			];
 		} else {
 			$options[CURLOPT_POSTFIELDS] = [
-				"proto"    => "@$_FILES[file][tmp_name]",
-				"filename" => $_FILES['file']['name']
+				'photo'    => '@' . $_FILES['file']['tmp_name'],
+				'filename' => $_FILES['file']['name']
 			];
 		}
 

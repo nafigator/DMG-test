@@ -39,6 +39,11 @@ class RegistrationDefinition
 		'link'         => [
 			'filter'   => FILTER_VALIDATE_URL,
 			'flags'    => FILTER_REQUIRE_SCALAR
+		],
+		'category'   => [
+			'filter'   => FILTER_VALIDATE_REGEXP,
+			'flags'    => FILTER_REQUIRE_SCALAR,
+			'options'  => ['regexp' => '/^.{1,40}$/'],
 		]
 	];
 }

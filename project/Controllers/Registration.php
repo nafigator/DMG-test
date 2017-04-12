@@ -31,21 +31,23 @@ class Registration extends RestApiController
 	 */
 	public function post()
 	{
-		$first_name = $last_name = $patronymic = $link = null;
+		$first_name = $last_name = $patronymic = $link = $category = null;
 		extract($this->getData(RegistrationDefinition::POST), EXTR_IF_EXISTS);
 
 		$options[CURLOPT_POSTFIELDS] = [
-			'meta' => "$last_name $first_name $patronymic"
+			'mf_selector' => 'reject',
+			'meta'        => "$last_name $first_name $patronymic",
+			'galleries'   => isset($category) ? [$category] : ['default']
 		];
 
-		$fp = fopen('/tmp/var.dump', 'w+');
-		$options[CURLOPT_VERBOSE] = true;
-		$options[CURLOPT_STDERR]  = $fp;
+		//$fp = fopen('/tmp/var.dump', 'w+');
+		//$options[CURLOPT_VERBOSE] = true;
+		//$options[CURLOPT_STDERR]  = $fp;
 
 		$request = (new FindFacePostFactory)->create('face', $link, $options);
 		$result  = $request->exec();
 
-		fclose($fp);
+		//fclose($fp);
 
 		return (new RegistrationBuilder)
 			->setRequest($request)

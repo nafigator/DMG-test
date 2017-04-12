@@ -14,13 +14,14 @@ namespace Controllers;
 
 use RequestBuilders\FindFaceGet;
 use ResponseBuilders\CategoriesBuilder;
+use Veles\Controllers\RestApiController;
 
 /**
  * Class   Categories
  *
  * @author Yancharuk Alexander <alex at itvault at info>
  */
-class Categories extends AuthController
+class Categories extends RestApiController
 {
 	/**
 	 * Получение категорий

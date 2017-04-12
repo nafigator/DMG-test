@@ -27,6 +27,8 @@ use Veles\View\Adapters\NativeAdapter;
 $version = '0.0.1';
 header("X-Powered-By: DMG-test/$version", true);
 
+ini_set('html_errors', 0);
+
 $path = dirname(__DIR__);
 
 include "$path/lib/Veles/AutoLoader.php";
