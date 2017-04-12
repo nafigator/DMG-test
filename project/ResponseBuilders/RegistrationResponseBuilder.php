@@ -2,7 +2,7 @@
 /**
  * Билдер для ответа регистрации
  *
- * @file      RegistrationBuilder.php
+ * @file      RegistrationResponseBuilder.php
  *
  * PHP version 5.6+
  *
@@ -15,11 +15,11 @@ namespace ResponseBuilders;
 use ResponseBuilders\Base\AbstractResponseBuilder;
 
 /**
- * Class   RegistrationBuilder
+ * Class   RegistrationResponseBuilder
  *
  * @author Yancharuk Alexander <alex at itvault at info>
  */
-class RegistrationBuilder extends AbstractResponseBuilder
+class RegistrationResponseBuilder extends AbstractResponseBuilder
 {
 	/**
 	 * Построение ответа API

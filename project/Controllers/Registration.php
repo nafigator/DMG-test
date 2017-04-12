@@ -13,7 +13,7 @@
 namespace Controllers;
 
 use Request\FindFacePostFactory;
-use ResponseBuilders\RegistrationBuilder;
+use ResponseBuilders\RegistrationResponseBuilder;
 use Validators\Definitions\RegistrationDefinition;
 use Veles\Controllers\RestApiController;
 
@@ -43,7 +43,7 @@ class Registration extends RestApiController
 		$request = (new FindFacePostFactory)->create('face', $link, $options);
 		$result  = $request->exec();
 
-		return (new RegistrationBuilder)
+		return (new RegistrationResponseBuilder)
 			->setRequest($request)
 			->setResult($result)
 			->build()

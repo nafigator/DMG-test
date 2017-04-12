@@ -2,7 +2,7 @@
 /**
  * Билдер для запроса списка категорий
  *
- * @file      CategoriesBuilder.php
+ * @file      CategoriesResponseBuilder.php
  *
  * PHP version 5.6+
  *
@@ -15,11 +15,11 @@ namespace ResponseBuilders;
 use ResponseBuilders\Base\AbstractResponseBuilder;
 
 /**
- * Class   CategoriesBuilder
+ * Class   CategoriesResponseBuilder
  *
  * @author Yancharuk Alexander <alex at itvault at info>
  */
-class CategoriesBuilder extends AbstractResponseBuilder
+class CategoriesResponseBuilder extends AbstractResponseBuilder
 {
 	/**
 	 * Построение ответа API

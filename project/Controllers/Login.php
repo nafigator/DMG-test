@@ -14,9 +14,8 @@ namespace Controllers;
 
 use Handlers\LoginHandler;
 use Request\FindFacePostFactory;
-use ResponseBuilders\LoginBuilder;
+use ResponseBuilders\LoginResponseBuilder;
 use Validators\Definitions\LoginDefinition;
-use Veles\Cache\Cache;
 use Veles\Controllers\RestApiController;
 
 /**
@@ -40,7 +39,7 @@ class Login extends RestApiController
 
 		$request = (new FindFacePostFactory)->create('identify', $link, $options);
 		$result  = $request->exec();
-		$builder = new LoginBuilder;
+		$builder = new LoginResponseBuilder;
 		$builder->attach(new LoginHandler);
 
 		return $builder

@@ -2,7 +2,7 @@
 /**
  * Построение ответа для логина пользователя
  *
- * @file      LoginBuilder.php
+ * @file      LoginResponseBuilder.php
  *
  * PHP version 5.6+
  *
@@ -17,11 +17,11 @@ use SplSubject;
 use Veles\Traits\Observable;
 
 /**
- * Class   LoginBuilder
+ * Class   LoginResponseBuilder
  *
  * @author Yancharuk Alexander <alex at itvault at info>
  */
-class LoginBuilder extends AbstractResponseBuilder implements SplSubject
+class LoginResponseBuilder extends AbstractResponseBuilder implements SplSubject
 {
 	use Observable;
 

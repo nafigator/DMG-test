@@ -13,7 +13,7 @@
 namespace Controllers;
 
 use RequestBuilders\FindFaceGet;
-use ResponseBuilders\CategoriesBuilder;
+use ResponseBuilders\CategoriesResponseBuilder;
 use Veles\Controllers\RestApiController;
 
 /**
@@ -35,7 +35,7 @@ class Categories extends RestApiController
 			//TODO Обработка ошибок
 		}
 
-		return (new CategoriesBuilder)
+		return (new CategoriesResponseBuilder)
 			->setRequest($request)
 			->setResult($result)
 			->build()
