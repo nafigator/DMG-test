@@ -35,7 +35,7 @@ class Registration extends RestApiController
 		extract($this->getData(RegistrationDefinition::POST), EXTR_IF_EXISTS);
 
 		$options[CURLOPT_POSTFIELDS] = [
-			'meta'      => "$last_name $first_name $patronymic"
+			'meta' => "$last_name $first_name $patronymic"
 		];
 
 		$fp = fopen('/tmp/var.dump', 'w+');
