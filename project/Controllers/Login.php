@@ -16,6 +16,7 @@ use Handlers\LoginHandler;
 use Request\FindFacePostFactory;
 use ResponseBuilders\LoginBuilder;
 use Validators\Definitions\LoginDefinition;
+use Veles\Cache\Cache;
 use Veles\Controllers\RestApiController;
 
 /**

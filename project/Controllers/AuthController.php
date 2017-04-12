@@ -14,6 +14,7 @@ namespace Controllers;
 
 use Auth\Auth;
 use Exceptions\UnauthorizedException;
+use Models\User;
 use Veles\Controllers\RestApiController;
 
 /**
@@ -23,6 +24,7 @@ use Veles\Controllers\RestApiController;
  */
 class AuthController extends RestApiController
 {
+	/** @var  User */
 	protected $user;
 
 	/**
