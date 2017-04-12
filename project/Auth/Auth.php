@@ -33,7 +33,6 @@ class Auth extends UsrAuth
 			throw new UnauthorizedException();
 		}
 
-		//TODO Написать декоратор для кэширования пользователя
 		$this->strategy = new HttpBaseStrategy(
 			(int) $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'], new User
 		);
