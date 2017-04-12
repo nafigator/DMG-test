@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "galleries": [
+        "default"
+      ],
+      "id": 673370,
+      "meta": "\u0425\u0443\u0440\u0433\u0438\u0434\u0437\u0435 \u0417\u0443\u0440\u0430\u0431 \u0410\u0437\u0430\u043c\u043e\u0432\u0438\u0447",
+      "photo": "https://pbs.twimg.com/media/CO0d2ZcUkAA6gjw.jpg",
+      "photo_hash": "7fc0a4f423d33f2102a85f67e366d5be",
+      "thumbnail": "https://static.findface.pro/58ece799a43d24660fdf4944/7fc0a4f423d33f2102a85f67e366d5be_136_166_404_434_thumb.jpg",
+      "timestamp": "2017-04-12T04:49:02.937085",
+      "x1": 136,
+      "x2": 404,
+      "y1": 166,
+      "y2": 434
+    }
+  ]
+}

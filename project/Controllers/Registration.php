@@ -34,19 +34,18 @@ class Registration extends RestApiController
 		extract($this->getData(RegistrationDefinition::POST), EXTR_IF_EXISTS);
 
 		$options[CURLOPT_POSTFIELDS] = [
-			'meta'      => "$last_name $first_name $patronymic",
-			'galleries' => ['registration']
+			'meta'      => "$last_name $first_name $patronymic"
 		];
 
-		//$options[CURLOPT_VERBOSE] = true;
-		//$fp = fopen('/tmp/var.dump', 'w+');
-		//$options[CURLOPT_STDERR] = $fp;
+		$fp = fopen('/tmp/var.dump', 'w+');
+		$options[CURLOPT_VERBOSE] = true;
+		$options[CURLOPT_STDERR]  = $fp;
 
 		$request = (new FindFacePostFactory)->create('face', $link, $options);
+		$result  = $request->exec();
 
-		$result = $request->exec();
+		fclose($fp);
 
-		//fclose($fp);
 		return [];
 	}
 }

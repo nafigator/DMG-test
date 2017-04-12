@@ -1,0 +1,29 @@
+server {
+	listen			80;
+	server_name		dmg-test.lo;
+	charset			utf-8;
+
+	root   /home/alex/dev/DMG-test/public;
+	index  index-dev.php;
+
+	client_max_body_size	5m;
+	client_body_timeout		60;
+
+	location / {
+		try_files $uri $uri/ /index-dev.php?$query_string;
+	}
+
+	location ~* \.(jpe?g|json|gif|png|ico|js|css|ttf|woff2)$ {
+		access_log	off;
+		expires		max;
+	}
+
+	# pass the PHP scripts to FastCGI server listening on localhost 9000 port;
+	#
+	location ~ \.php$ {
+		fastcgi_pass	127.0.0.1:9000;
+		fastcgi_index	index-dev.php;
+		fastcgi_param	SCRIPT_FILENAME $document_root/index-dev.php;
+		include			fastcgi_params;
+	}
+}
