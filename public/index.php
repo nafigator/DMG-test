@@ -39,20 +39,6 @@ AutoLoader::init();
 MemcachedAdapter::addCall('addServer', ['localhost', 11211]);
 Cache::setAdapter(MemcachedAdapter::instance());
 
-// Параметры соединения с базой
-$pool = new ConnectionPool();
-$conn = new PdoConnection('master');
-$conn->setDsn('mysql:host=localhost;dbname=dmg;charset=utf8')
-	->setUserName('dmg')
-	->setPassword('_GRcshGYyvUu')
-	->setOptions([
-		PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-		PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-		PDO::MYSQL_ATTR_INIT_COMMAND => 'SET sql_mode=ANSI'
-	]);
-$pool->addConnection($conn, true);
-Db::setAdapter((new PdoAdapter)->setPool($pool));
-
 $config = new RoutesCacheDecorator(
 	new RoutesConfig(new IniConfigLoader("$path/project/routes.ini"))
 );
