@@ -24,10 +24,11 @@ use Veles\Routing\Route;
 use Veles\Routing\RoutesConfig;
 use Veles\View\Adapters\NativeAdapter;
 
-$version = '0.0.1';
+$version = '0.1.0';
 header("X-Powered-By: DMG-test/$version", true);
 
 ini_set('html_errors', 0);
+ini_set('display_errors', E_ALL);
 
 $path = dirname(__DIR__);
 

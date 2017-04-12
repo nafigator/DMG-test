@@ -12,6 +12,7 @@
 
 namespace Controllers;
 
+use Handlers\FindFaceErrorHandler;
 use Request\FindFacePostFactory;
 use ResponseBuilders\RegistrationResponseBuilder;
 use Validators\Definitions\RegistrationDefinition;
@@ -41,7 +42,7 @@ class Registration extends RestApiController
 		];
 
 		$request = (new FindFacePostFactory)->create('face', $link, $options);
-		$result  = $request->exec();
+		$result  = (new FindFaceErrorHandler($request))->exec();
 
 		return (new RegistrationResponseBuilder)
 			->setRequest($request)

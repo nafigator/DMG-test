@@ -12,6 +12,7 @@
 
 namespace Controllers;
 
+use Handlers\FindFaceErrorHandler;
 use RequestBuilders\FindFaceGet;
 use ResponseBuilders\CategoriesResponseBuilder;
 use Veles\Controllers\RestApiController;
@@ -29,11 +30,7 @@ class Categories extends RestApiController
 	public function get()
 	{
 		$request = new FindFaceGet('galleries');
-		$result  = $request->exec();
-
-		if (0 !== $request->getErrorCode()) {
-			//TODO Обработка ошибок
-		}
+		$result  = (new FindFaceErrorHandler($request))->exec();
 
 		return (new CategoriesResponseBuilder)
 			->setRequest($request)

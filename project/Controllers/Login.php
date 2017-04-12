@@ -12,6 +12,7 @@
 
 namespace Controllers;
 
+use Handlers\FindFaceErrorHandler;
 use Handlers\LoginHandler;
 use Request\FindFacePostFactory;
 use ResponseBuilders\LoginResponseBuilder;
@@ -33,12 +34,10 @@ class Login extends RestApiController
 		$link = null;
 		extract($this->getData(LoginDefinition::POST), EXTR_IF_EXISTS);
 
-		$options[CURLOPT_POSTFIELDS] = [
-			'mf_selector' => 'reject'
-		];
+		$options[CURLOPT_POSTFIELDS] = ['mf_selector' => 'reject'];
 
 		$request = (new FindFacePostFactory)->create('identify', $link, $options);
-		$result  = $request->exec();
+		$result  = (new FindFaceErrorHandler($request))->exec();
 		$builder = new LoginResponseBuilder;
 		$builder->attach(new LoginHandler);
 
