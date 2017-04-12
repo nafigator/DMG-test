@@ -1,8 +1,8 @@
 <?php
 /**
- * Базовый класс для запроса на findface.pro
+ * Базовый класс для POST-запроса на findface.pro
  *
- * @file      FindFaceBase.php
+ * @file      FindFacePost.php
  *
  * PHP version 5.6+
  *
@@ -15,18 +15,13 @@ namespace RequestBuilders;
 use Veles\CurlRequest\PostCurlRequest;
 
 /**
- * Class   FindFaceBase
+ * Class   FindFacePost
  *
  * @author Yancharuk Alexander <alex at itvault at info>
  */
-class FindFaceBase extends PostCurlRequest
+class FindFacePost extends PostCurlRequest
 {
-	/** @var string API host */
-	protected $host  = 'https://api.findface.pro';
-	/** @var string Токен для доступа к API findface */
-	protected $token = 'OWwh0_FUQlxx8StEJAS8fO3IL84EdGI2';
-	/** @var string Версия API */
-	protected $version = 'v0';
+	use CredentialsTrait;
 
 	public function __construct($url, array $options = [])
 	{

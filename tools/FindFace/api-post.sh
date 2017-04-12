@@ -13,5 +13,5 @@ curl -i \
 	--header "Authorization: Token OWwh0_FUQlxx8StEJAS8fO3IL84EdGI2" \
 	--user-agent "Curl v.7.40.0" \
 	--data "$1" \
-	https://api.findface.pro/v0/$2
+	https://api.findface.pro/v0$2
 echo

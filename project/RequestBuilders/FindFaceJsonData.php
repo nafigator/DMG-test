@@ -17,7 +17,7 @@ namespace RequestBuilders;
  *
  * @author Yancharuk Alexander <alex at itvault at info>
  */
-class FindFaceJsonData extends FindFaceBase
+class FindFaceJsonData extends FindFacePost
 {
 	public function __construct($url, array $options = [])
 	{

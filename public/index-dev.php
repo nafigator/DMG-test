@@ -35,6 +35,9 @@ set_include_path(
 );
 AutoLoader::init();
 
+MemcachedAdapter::addCall('addServer', ['localhost', 11211]);
+Cache::setAdapter(MemcachedAdapter::instance());
+
 $config = new RoutesConfig(new IniConfigLoader("$path/project/routes.ini"));
 $route  = new Route;
 $route

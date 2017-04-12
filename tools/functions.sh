@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
-# Function for error
+# Function for error messages
 error() {
-	printf "[$(date --rfc-3339=seconds)]: \033[0;31mERROR:\033[0m $@\n" >&2
+	printf "[$(date +'%Y-%m-%d %H:%M:%S')]: \033[0;31mERROR:\033[0m $@\n" >&2
 }
 
 # Function for informational messages
 inform() {
-	printf "[$(date --rfc-3339=seconds)]: \033[0;32mINFO:\033[0m $@\n"
+	printf "[$(date +'%Y-%m-%d %H:%M:%S')]: \033[0;32mINFO:\033[0m $@\n"
 }
 
 # Function for warning messages
-warn() {
-	printf "[$(date --rfc-3339=seconds)]: \033[0;33mWARNING:\033[0m $@\n" >&2
+warning() {
+	printf "[$(date +'%Y-%m-%d %H:%M:%S')]: \033[0;33mWARNING:\033[0m $@\n" >&2
 }
 
 # Function for debug messages
 debug() {
-	[ ! -z ${DEBUG} ] && printf "[$(date --rfc-3339=seconds)]: \033[0;32mDEBUG:\033[0m $@\n"
+	[ ! -z ${DEBUG} ] && printf "[$(date +'%Y-%m-%d %H:%M:%S')]: \033[0;32mDEBUG:\033[0m $@\n"
 }

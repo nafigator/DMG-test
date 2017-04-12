@@ -18,5 +18,5 @@ namespace Exceptions;
 class UnauthorizedException extends \Veles\Exceptions\Http\UnauthorizedException
 {
 	protected $realm = 'DMG-test';
-	protected $type  = 'Request';
+	protected $type  = 'Basic';
 }
