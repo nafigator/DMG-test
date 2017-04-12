@@ -13,6 +13,7 @@
 namespace ResponseBuilders;
 
 use ResponseBuilders\Base\AbstractResponseBuilder;
+use Veles\Traits\Observable;
 
 /**
  * Class   LoginBuilder
@@ -21,6 +22,10 @@ use ResponseBuilders\Base\AbstractResponseBuilder;
  */
 class LoginBuilder extends AbstractResponseBuilder
 {
+	use Observable;
+
+	protected $face;
+
 	/**
 	 * Построение ответа API
 	 *
@@ -30,13 +35,38 @@ class LoginBuilder extends AbstractResponseBuilder
 	{
 		$data    = json_decode($this->result, true);
 		$results = reset($data['results']);
-		$face    = reset($results);
+		$array   = reset($results);
+		$face    = $array['face'];
 
 		$this->response = [
-			'token' => base64_encode(
-				$face['face']['id'] . ':' . $face['face']['photo_hash']
-			)
+			'token' => base64_encode($face['id'] . ':' . $face['photo_hash'])
 		];
+
+		$this->setFace($face)->notify();
+
+		return $this;
+	}
+
+	/**
+	 * Получить данные найденного фото
+	 *
+	 * @return mixed
+	 */
+	public function getFace()
+	{
+		return $this->face;
+	}
+
+	/**
+	 * Сохраняем данные найденного фото
+	 *
+	 * @param mixed $face
+	 *
+	 * @return $this
+	 */
+	public function setFace($face)
+	{
+		$this->face = $face;
 
 		return $this;
 	}

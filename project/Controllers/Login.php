@@ -12,6 +12,7 @@
 
 namespace Controllers;
 
+use Handlers\LoginHandler;
 use Request\FindFacePostFactory;
 use ResponseBuilders\LoginBuilder;
 use Validators\Definitions\LoginDefinition;
@@ -45,7 +46,10 @@ class Login extends RestApiController
 
 		//fclose($fp);
 
-		return (new LoginBuilder)
+		$builder = new LoginBuilder;
+		$builder->attach(new LoginHandler);
+
+		return $builder
 			->setRequest($request)
 			->setResult($result)
 			->build()
