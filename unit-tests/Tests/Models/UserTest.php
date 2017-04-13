@@ -9,27 +9,27 @@ use \Models\User;
  */
 class UserTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @var User
-     */
-    protected $object;
+	/**
+	 * @var User
+	 */
+	protected $object;
 
-    /**
-     * Sets up the fixture, for example, opens a network connection.
-     * This method is called before a test is executed.
-     */
-    protected function setUp()
-    {
-        $this->object = new User;
-    }
+	/**
+	 * Sets up the fixture, for example, opens a network connection.
+	 * This method is called before a test is executed.
+	 */
+	protected function setUp()
+	{
+		$this->object = new User;
+	}
 
-    /**
-     * Tears down the fixture, for example, closes a network connection.
-     * This method is called after a test is executed.
-     */
-    protected function tearDown()
-    {
-    }
+	/**
+	 * Tears down the fixture, for example, closes a network connection.
+	 * This method is called after a test is executed.
+	 */
+	protected function tearDown()
+	{
+	}
 
 	public function testGetById()
 	{
@@ -57,5 +57,5 @@ class UserTest extends \PHPUnit_Framework_TestCase
 
 		$msg = 'User::getById wrong behavior';
 		$this->assertSame($expected, $properties, $msg);
-    }
+	}
 }

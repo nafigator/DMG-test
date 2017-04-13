@@ -161,7 +161,7 @@ fi
 
 debug "Build full class name"
 if [ -z "${NAMESPACE}" ]; then
-	readonly FULL_CLASS_NAME="$(echo "\\${RELATIVE_CLASS_PATH}" | sed s/${CLASS_EXTENSION}// | sed 's/\//\\/g')"
+	readonly FULL_CLASS_NAME="$(echo "${RELATIVE_CLASS_PATH}" | sed s/${CLASS_EXTENSION}// | sed 's/\//\\/g')"
 else
 	readonly FULL_CLASS_NAME="$(echo "${NAMESPACE}\\${CLASS_NAME}")"
 fi
@@ -176,7 +176,7 @@ if [ -z "${FULL_CLASS_NAME}" ]; then
 fi
 
 debug "Build relative test path"
-readonly RELATIVE_TEST_PATH="$(echo "Tests/${FULL_CLASS_NAME}" | sed 's/\\//' | sed 's/\\/\//g')Test$CLASS_EXTENSION"
+readonly RELATIVE_TEST_PATH="$(echo "Tests/${FULL_CLASS_NAME}" | sed 's/\\/\//g')Test$CLASS_EXTENSION"
 
 debug "Relative test path: '${RELATIVE_TEST_PATH}'"
 
@@ -217,7 +217,7 @@ if [ ! -x "${UNIT_TEST_DIR}" ]; then
 	create_test_dir
 fi
 
-phpunit-skelgen --bootstrap="bootstrap.php" generate-test "${FULL_CLASS_NAME}" "${RELATIVE_CLASS_PATH}" "${FULL_TEST_NAME}" "${RELATIVE_TEST_PATH}"
+phpunit-skelgen --bootstrap="bootstrap.php" generate-test "${FULL_CLASS_NAME}" "../project/${RELATIVE_CLASS_PATH}" "${FULL_TEST_NAME}" "${RELATIVE_TEST_PATH}"
 
 debug "Create group comment tag"
 readonly group=$(get_group ${RELATIVE_CLASS_PATH})

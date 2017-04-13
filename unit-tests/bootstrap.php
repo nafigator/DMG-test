@@ -29,7 +29,7 @@ define('PROJECT_DIR', realpath(__DIR__ . '/../project'));
 date_default_timezone_set('Europe/Moscow');
 
 require LIB_DIR . '/Veles/AutoLoader.php';
-$includes = LIB_DIR . ':' . TEST_DIR . ':' . PROJECT_DIR;
+$includes = PROJECT_DIR . ':' . LIB_DIR . ':' . TEST_DIR;
 set_include_path(implode(PATH_SEPARATOR, [$includes, get_include_path()]));
 
 AutoLoader::init();
