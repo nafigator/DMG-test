@@ -12,6 +12,7 @@
 
 namespace Models;
 
+use Handlers\FindFaceErrorHandler;
 use RequestBuilders\FindFaceBase;
 use RequestBuilders\FindFaceGet;
 use Veles\Traits\DynamicPropHandler;
@@ -34,11 +35,7 @@ class User extends UserBase
 	public function getById($id)
 	{
 		$request = new FindFaceGet("face/id/$id");
-		$result  = $request->exec();
-
-		if (0 !== $request->getErrorCode()) {
-			//TODO Обработка ошибок
-		}
+		$result  = (new FindFaceErrorHandler($request))->exec();
 
 		$image = json_decode($result, true);
 		list($last_name, $first_name, $patronymic) = explode(' ', $image['meta']);
