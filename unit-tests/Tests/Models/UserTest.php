@@ -30,4 +30,32 @@ class UserTest extends \PHPUnit_Framework_TestCase
     protected function tearDown()
     {
     }
+
+	public function testGetById()
+	{
+		$actual = $this->object->getById(673370);
+
+		$msg = 'User::getById returns wrong result';
+		$this->assertSame($this->object, $actual, $msg);
+
+		$expected = [
+			'first_name' => 'Зураб',
+			'last_name'  => 'Хургидзе',
+			'patronymic' => 'Азамович',
+			'id'         => 673370,
+			'hash'       => '7fc0a4f423d33f2102a85f67e366d5be'
+		];
+
+		$properties = [
+			'first_name' => '',
+			'last_name' => '',
+			'patronymic' => '',
+			'id' => '',
+			'hash' => ''
+		];
+		$this->object->getProperties($properties);
+
+		$msg = 'User::getById wrong behavior';
+		$this->assertSame($expected, $properties, $msg);
+    }
 }

@@ -17,8 +17,6 @@ use Veles\AutoLoader;
 use Veles\Cache\Adapters\MemcachedAdapter;
 use Veles\Cache\Adapters\MemcacheRaw;
 use Veles\Cache\Cache;
-use Veles\View\Adapters\NativeAdapter;
-use Veles\View\View;
 
 //ini_set('error_reporting', E_ALL);
 //ini_set('display_errors', '1');
