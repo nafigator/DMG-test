@@ -7,4 +7,6 @@ https://pbs.twimg.com/media/CO0d2ZcUkAA6gjw.jpg
 
 ./api-post.sh 'link=https://pbs.twimg.com/media/CO0d2ZcUkAA6gjw.jpg' /login
 
+./api-post-file.sh brad-pitt1.jpg brad-pitt1.jpg /login
+
 ./api-post-auth.sh '' /logout

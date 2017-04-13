@@ -47,7 +47,7 @@ class FindFaceErrorHandler
 		$result  = $request->exec();
 
 		if (200 !== ($code = $request->getInfo(CURLINFO_HTTP_CODE))) {
-			$this->processCode($code, $result);
+			$this->processCode($code, json_decode($result, true));
 		}
 
 		return $result;

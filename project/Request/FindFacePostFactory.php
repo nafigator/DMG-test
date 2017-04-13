@@ -81,16 +81,12 @@ class FindFacePostFactory
 	{
 		if (isset($options[CURLOPT_POSTFIELDS])) {
 			$options[CURLOPT_POSTFIELDS] += [
-				'photo'    => '@' . $_FILES['file']['tmp_name'],
-				'filename' => $_FILES['file']['name']
+				'photo' => curl_file_create($_FILES['file']['tmp_name'])
 			];
 		} else {
 			$options[CURLOPT_POSTFIELDS] = [
-				'photo'    => '@' . $_FILES['file']['tmp_name'],
-				'filename' => $_FILES['file']['name']
+				'photo' => curl_file_create($_FILES['file']['tmp_name'])
 			];
 		}
-
-		$options[CURLOPT_INFILESIZE] = $_FILES['file']['size'];
 	}
 }
