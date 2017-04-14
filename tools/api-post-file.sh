@@ -9,6 +9,7 @@ fi
 
 clear && \
 curl -i \
+	--request POST \
 	--cookie "XDEBUG_SESSION=1" \
 	--user-agent "Curl v.7.40.0" \
 	-F "file=@$1;filename=$2" \
