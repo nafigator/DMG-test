@@ -15,14 +15,12 @@ use Veles\Application\Environment;
 use Veles\AutoLoader;
 use Veles\Cache\Adapters\MemcachedAdapter;
 use Veles\Cache\Cache;
-use Veles\DataBase\Adapters\PdoAdapter;
-use Veles\DataBase\ConnectionPools\ConnectionPool;
-use Veles\DataBase\Connections\PdoConnection;
-use Veles\DataBase\Db;
+use Veles\Request\RequestFactory;
+use Veles\Request\Validator\PhpFilters;
+use Veles\Request\Validator\Validator;
 use Veles\Routing\IniConfigLoader;
 use Veles\Routing\Route;
 use Veles\Routing\RoutesConfig;
-use Veles\View\Adapters\NativeAdapter;
 
 $version = '0.1.0';
 header("X-Powered-By: DMG-test/$version", true);
@@ -48,8 +46,12 @@ $route
 	->setConfigHandler($config)
 	->init();
 
+$request = RequestFactory::create($_SERVER['CONTENT_TYPE'])
+	->setValidator((new Validator)->setAdapter(new PhpFilters));
+
 (new Application)
 	->setEnvironment((new Environment)->setName('dev'))
+	->setRequest($request)
 	->setRoute($route)
 	->setVersion($version)
 	->run();
